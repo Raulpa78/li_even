@@ -29,13 +29,7 @@ jobs:
           EVENTOS_VIV_URL: ${{ secrets.EVENTOS_VIV_URL }}
         run: python download_m3u.py
 
-      - name: Upload eventos.m3u as artifact
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: eventos
-          path: eventos.m3u
-          retention-days: 30
+      
 
       - name: Commit and push if changed
         run: |
