@@ -1,0 +1,25 @@
+name: Download M3U
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run download_m3u.py script
+        env:
+          EVENTOS_VIV_URL: ${{ secrets.EVENTOS_VIV_URL }}
+        run: |
+          python download_m3u.py
+
+      - name: Upload eventos.m3u as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: eventos
+          path: eventos.m3u
