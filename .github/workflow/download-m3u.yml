@@ -1,6 +1,7 @@
 name: Download M3U
 
 on:
+workflow_dispatch:
   push:
     branches:
       - main
